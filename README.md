@@ -94,8 +94,13 @@ The four plots that you will need to construct are shown below.
 
 ### Plot 1
 
+#### Provided Sample
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+
+#### Provided Sample
+
+![plot of chunk plot1](figure/plot1.png) 
 
 
 ### Plot 2
