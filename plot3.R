@@ -15,7 +15,8 @@ powerdata$DateTime <- strptime(paste(powerdata[, 'Date'], powerdata[, 'Time']),
 powerdata$Date <- NULL
 powerdata$Time <- NULL
 
-png(width = 504, height = 504, units = 'px', filename = 'figure/plot3.png')
+#assignment asks for 480x480 but samples were 504x504, going with assignment specs over samples
+png(width = 480, height = 480, units = 'px', filename = 'figure/plot3.png')
 #plot first line
 plot(powerdata[,'DateTime'], powerdata[,'Sub_metering_1'], type='l', col='black',
      xlab = '', ylab = 'Energy sub metering')

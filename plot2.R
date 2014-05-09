@@ -15,6 +15,7 @@ powerdata$DateTime <- strptime(paste(powerdata[, 'Date'], powerdata[, 'Time']),
 powerdata$Date <- NULL
 powerdata$Time <- NULL
 
+#assignment asks for 480x480 but samples were 504x504, going with assignment specs over samples
 png(width = 480, height = 480, units = 'px', filename = 'figure/plot2.png')
 plot(powerdata$DateTime, powerdata$Global_active_power, type='l',
      ylab = 'Global Active Power (kilowatts)', xlab = '')

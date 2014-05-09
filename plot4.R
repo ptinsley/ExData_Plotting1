@@ -15,8 +15,8 @@ powerdata$DateTime <- strptime(paste(powerdata[, 'Date'], powerdata[, 'Time']),
 powerdata$Date <- NULL
 powerdata$Time <- NULL
 
-#start the png output device
-png(width = 504, height = 504, units = 'px', filename = 'figure/plot4.png')
+#assignment asks for 480x480 but samples were 504x504, going with assignment specs over samples
+png(width = 480, height = 480, units = 'px', filename = 'figure/plot4.png')
 #setup a 2 by 2 matrix for plots
 par(mfrow=c(2,2))
 #top left, global active power
