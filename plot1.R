@@ -1,18 +1,22 @@
-powerdata <- read.table('household_power_consumption.txt', sep = ';', header = TRUE)
+powerdata <- read.table("household_power_consumption.txt",
+                     skip = 66637, nrow = 2880, sep = ";", 
+                     col.names = colnames(read.table(
+                       "household_power_consumption.txt",
+                       nrow = 1, header = TRUE, sep=";")))
 
-powerdata$Global_active_power <- as.numeric(powerdata$Global_active_power)
+#global column needs to be numeric, comes in as factor
+powerdata$Global_active_power <- as.numeric(as.character(powerdata$Global_active_power))
 
 #convert the date / time value into a Posix time format
-powerdata$DateTime <- strptime(paste(powerdata[, 'Date'], powerdata[, 'Time']), "%d/%m/%Y %H:%M:%S")
+powerdata$DateTime <- strptime(paste(powerdata[, 'Date'], powerdata[, 'Time']),
+                               "%d/%m/%Y %H:%M:%S", tz='CEST')
 
-#kill the old columns
+#kill the old columns (unneeded)
 powerdata$Date <- NULL
 powerdata$Time <- NULL
 
-#filter down to the dates we care about 02/01/2007 - 02/02/2007get
-powerdata <- powerdata[powerdata$DateTime >= as.POSIXct('2007-02-01') &
-            powerdata$DateTime < as.POSIXct('2007-02-03'),]
-
 png(width = 480, height = 480, units = 'px', filename = 'figure/plot1.png')
-hist(powerdata$Global_active_power, col='red', xlab = 'Global Active Power (kilowatts)', main = 'Global Active Power')
+hist(powerdata$Global_active_power, col='red',
+     xlab = 'Global Active Power (kilowatts)', main = 'Global Active Power',
+     ylim = c(0,1200))
 dev.off()
